@@ -1,0 +1,13 @@
+{
+    "line": true,
+    "file": false,
+    "callbacks": [{
+        "fileName": "all",
+        "scope": "source",
+        "callback": "(function fixTs(source, fileName) { return 'declare var require: any;' + source; })"
+    }, {
+        "fileName": "all",
+        "scope": "line",
+        "callback": "(function fixTs(line, fileName, lineNumber) { return line.replace(/^(import.*(require\\(.*?\\)))/g, '$2;$1'); })"
+    }]
+}

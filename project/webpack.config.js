@@ -17,7 +17,7 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.tsx?$/,
-            loader: 'ts-loader'
+            loader: 'ts-loader!preprocessor?file&config=preprocess-ts.json'
         }]
     }
 };

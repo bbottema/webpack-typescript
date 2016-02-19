@@ -1,15 +1,10 @@
-declare var require: any;
-
 'use strict';
 
 var angular = require('angular');
 var app = angular.module('myApp', []);
 
-
-import ClassA = require('ClassA'); 
-require('ClassA');
-import ClassB = require('ClassB'); 
-require('ClassB');
+import ClassA = require('ClassA');
+import ClassB = require('ClassB');
 
 var a:ClassA = new ClassA(); // direct use, this works
 

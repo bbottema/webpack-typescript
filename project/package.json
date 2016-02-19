@@ -1,9 +1,10 @@
 {
-    "devDependencies": {
-        "typescript": "^1.7.5",
-        "ts-loader": "^0.8.1"
-    },
-    "dependencies": {
-        "angular": "1.4.9"
-    }
+  "devDependencies": {
+    "preprocessor-loader": "^1.0.5",
+    "ts-loader": "^0.8.1",
+    "typescript": "^1.7.5"
+  },
+  "dependencies": {
+    "angular": "1.4.9"
+  }
 }
