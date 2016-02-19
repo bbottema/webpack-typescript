@@ -4,10 +4,11 @@ declare var require: any;
 console.log('ClassB.ts: if you see this, then ClassB.ts was packaged properly');
 
 class ClassB {
+    public func: Function = function(): void {};
 }
 
-var angular = require(angular);
+var angular = require('angular');
 
-angular.module('myApp').service(new ClassB());
+angular.module('myApp').service('myProvider', (new ClassB()).func);
 
 export = ClassB;
