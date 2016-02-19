@@ -1,0 +1,9 @@
+npm-debug.log
+bower/
+dist/
+node_modules/
+/.settings/
+/.project
+_SpecRunner.html
+junit/
+tmp/
