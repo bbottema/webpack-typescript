@@ -2,15 +2,16 @@ declare var require: any;
 
 'use strict';
 
-import ClassA = require('ClassA');
-import ClassB = require('ClassB');
+var angular = require('angular');
+var app = angular.module('myApp', []);
+
+
+import ClassA = require('ClassA'); 
+require('ClassA');
+import ClassB = require('ClassB'); 
+require('ClassB');
 
 var a:ClassA = new ClassA(); // direct use, this works
 
-var angular = require('angular');
-
-angular.module('myApp', []).
-    // this compiles as it should, but in runtime the provider will not be packaged and angular will throw an error
-    run(function(myProvider: ClassB) {
-    }
-);
+// this compiles as it should, but in runtime the provider will not be packaged and angular will throw an error
+app.run(function(myProvider: ClassB) {});
