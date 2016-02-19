@@ -1,7 +1,4 @@
 {
-    "name": "test-project",
-    "version": "0.1.0",
-    "author": "Benny Bottema",
     "devDependencies": {
         "typescript": "^1.7.5",
         "ts-loader": "^0.8.1"
