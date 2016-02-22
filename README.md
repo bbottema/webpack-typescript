@@ -27,7 +27,12 @@ import ClassA = require('ClassA');
 import ClassB = require('ClassB');
 ```
 
-**First**, this is not enough for WebPack to understand it needs to always bundle `ClassA.ts` and `ClassB.ts`, even if the exports are not directly used, but only referenced. To fix this, we need to add extra WebPack-only imports:
+**First**, this is not enough for WebPack to understand it needs to always bundle `ClassA.ts` and `ClassB.ts`, even if the exports are not directly used, but only referenced. 
+
+> ERROR in /home/ubuntu/workspace/project/src/my_modules/ClassB.ts<br/>
+> (8,15): error TS2304: Cannot find name 'require'.
+
+To fix this, we need to add extra WebPack-only imports:
 
 ```javascript
 require('ClassA'); 
