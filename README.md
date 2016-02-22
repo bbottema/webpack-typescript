@@ -54,7 +54,7 @@ import ClassB = require('ClassB');
 
 Now everything will work. 
 
-## The trick
+## Automating the workarounds with the preprocessor loader
 
 These steps are automated in this example project: using the preprocessor, it prepends every `.ts` source with a `require` shim and it modifies every line that contains an import using a regular expression.
 
