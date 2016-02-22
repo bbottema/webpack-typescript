@@ -53,7 +53,7 @@ These steps are automated in this example project: it prepends every `.ts` sourc
 
 ## Caveat
 
-The regular expression to add require statements is very rudimentary (crude). The current version only works for the demo project where statements are `import sSomething = require('module');`:
+The regular expression to add require statements is very rudimentary (crude). The current version only works for the demo project where statements are `import something = require('module');`:
 
 ```
 return line.replace(/^(import.*(require\\(.*?\\)))/g, '$2;$1');
