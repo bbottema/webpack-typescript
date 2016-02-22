@@ -93,3 +93,5 @@ return line.replace(/^(import.*(require\\(.*?\\)))/g, '$2;$1');
 // becomes:
 // require('ClassA'); import ClassA = require('ClassA');
 ```
+
+One more thing, notice all .ts files have an empty line at the end. This is needed due to a [pending bug in the preprocessor loader](https://github.com/artificialtrends/preprocess-loader/issues/1).
