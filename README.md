@@ -49,7 +49,36 @@ import ClassB = require('ClassB');
 
 Now everything will work. 
 
+## The trick
+
 These steps are automated in this example project: using the preprocessor, it prepends every `.ts` source with a `require` shim and it modifies every line that contains an import using a regular expression.
+
+```javascript
+// webpack.config.js
+module: {
+    loaders: [{
+        test: /\.tsx?$/,
+        loader: 'ts-loader!preprocessor?file&config=preprocess-ts.json'
+    }]
+}
+
+// preprocess-ts.json
+{
+    "line": true,
+    "file": false,
+    "callbacks": [{
+        "fileName": "all",
+        "scope": "source",
+        "callback": "(function fixTs(source, fileName) { return 'declare var require: any;' + source; })"
+    }, {
+        "fileName": "all",
+        "scope": "line",
+        "callback": "(function fixTs(line, fileName, lineNumber) { return line.replace(/^(import.*(require\\(.*?\\)))/g, '$2;$1'); })"
+    }]
+}
+```
+
+
 
 ## Caveat
 
