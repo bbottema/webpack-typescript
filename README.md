@@ -22,14 +22,14 @@ Verify that the `.ts` sources don't include the workaround scripts.
 
 These imports exist in the code `entry.ts`:
 
-```
+```javascript
 import ClassA = require('ClassA');
 import ClassB = require('ClassB');
 ```
 
 **First**, this is not enough for WebPack to understand it needs to always bundle `ClassA.ts` and `ClassB.ts`, even if the exports are not directly used, but only referenced. To fix this, we need to add extra WebPack-only imports:
 
-```
+```javascript
 require('ClassA'); 
 import ClassA = require('ClassA');
 require('ClassB'); 
@@ -38,7 +38,7 @@ import ClassB = require('ClassB');
 
 **second**, to prevent TypeScript from throwing an error because it doesn't recognize `require` statements, we need to add an extra line on top:
 
-```
+```javascript
 declare var require: any;
 
 require('ClassA'); 
@@ -55,7 +55,7 @@ These steps are automated in this example project: it prepends every `.ts` sourc
 
 The regular expression to add require statements is very rudimentary (crude). The current version only works for the demo project where statements are `import something = require('module');`:
 
-```
+```javascript
 return line.replace(/^(import.*(require\\(.*?\\)))/g, '$2;$1');
 // import ClassA = require('ClassA');
 // becomes:
