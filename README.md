@@ -27,7 +27,7 @@ import ClassA = require('ClassA');
 import ClassB = require('ClassB');
 ```
 
-*First*, this is not enough for WebPack to understand it needs to always bundle `ClassA.ts` and `ClassB.ts`, even if the exports are not directly used, but only referenced. To fix this, we need to add extra WebPack-only imports:
+**First**, this is not enough for WebPack to understand it needs to always bundle `ClassA.ts` and `ClassB.ts`, even if the exports are not directly used, but only referenced. To fix this, we need to add extra WebPack-only imports:
 
 ```
 require('ClassA'); 
@@ -36,7 +36,7 @@ require('ClassB');
 import ClassB = require('ClassB');
 ```
 
-*second*, to prevent TypeScript from throwing an error because it doesn't recognize `require` statements, we need to add an extra line on top:
+**second**, to prevent TypeScript from throwing an error because it doesn't recognize `require` statements, we need to add an extra line on top:
 
 ```
 declare var require: any;
