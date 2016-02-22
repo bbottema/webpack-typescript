@@ -27,12 +27,7 @@ import ClassA = require('ClassA');
 import ClassB = require('ClassB');
 ```
 
-**First**, this is not enough for WebPack to understand it needs to always bundle `ClassA.ts` and `ClassB.ts`, even if the exports are not directly used, but only referenced. 
-
-> ERROR in /home/ubuntu/workspace/project/src/entry.ts<br/>
-> (3,15): error TS2304: Cannot find name 'require'.
-
-To fix this, we need to add extra WebPack-only imports:
+**First**, this is not enough for WebPack to understand it needs to always bundle `ClassA.ts` and `ClassB.ts`, even if the exports are not directly used, but only referenced. To fix this, we need to add extra WebPack-only imports:
 
 ```javascript
 require('ClassA'); 
@@ -41,7 +36,12 @@ require('ClassB');
 import ClassB = require('ClassB');
 ```
 
-**second**, to prevent TypeScript from throwing an error because it doesn't recognize `require` statements, we need to add an extra line on top:
+**second**, TypeScript will throw an error because it doesn't recognize `require` statements.
+
+> ERROR in /home/ubuntu/workspace/project/src/entry.ts<br/>
+> (3,15): error TS2304: Cannot find name 'require'.
+
+To fix this, we need to declare `require` on top
 
 ```javascript
 declare var require: any;
