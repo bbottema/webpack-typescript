@@ -2,8 +2,8 @@
 
 WebPack with TypeScript is a bit tricky to get working properly. There are two immediate issues that need to be solved fist:
 
-1. In addition to TypeScript imports, WebPack needs extra `require` statements for every import to build the dependency tree for bundling. Otherwise, a module won't be packaged if the export is not used directly (for example if you only used a type reference during compile time)
-2. TypeScript won't understand `require` statements that are needed for webpack to build the dependency tree for bundling
+1. In addition to TypeScript imports, WebPack needs extra `require` statements for every import to build the dependency tree for bundling. Otherwise, a module won't be packaged if the export is not used directly; for example if you only used a type reference during compile time ([stackoverflow.com: Webpack with typescript external commonjs module](http://stackoverflow.com/questions/34657652/webpack-with-typescript-external-commonjs-module/34658780))
+2. TypeScript won't understand `require` statements that are needed for webpack to build the dependency tree for bundling ([stackoverflow.com: typescript getting error TS2304: cannot find name 'require'](http://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require))
 
 This example project is a proof of concept that solves this problem using the [preprocessor loader](https://github.com/artificialtrends/preprocess-loader), so that you don't have to change your code at all to make this work properly.
 
