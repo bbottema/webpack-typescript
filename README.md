@@ -51,7 +51,7 @@ Now everything will work.
 
 These steps are automated in this example project: it prepends every `.ts` source with a `require` shim and it modifies every line that contains an import using a regular expression.
 
-Caveat
+## Caveat
 
 The regular expression to add require statements is very rudimentary (crude). The current version only works for the demo project where statements are `import sSomething = require('module');`:
 
