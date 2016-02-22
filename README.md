@@ -1,6 +1,6 @@
-# webpack-typescript demo
+# webpack-typescript clean source demo
 
-WebPack with TypeScriptm is a bit tricky to get working properly. There are two immediate issues that need to be solved fist:
+WebPack with TypeScript is a bit tricky to get working properly. There are two immediate issues that need to be solved fist:
 
 1. In addition to TypeScript imports, WebPack needs extra `require` statements for every import to build the dependency tree for bundling. Otherwise, a module won't be packaged if the export is not used directly (for example if you only used a type reference during compile time)
 2. TypeScript won't understand `require` statements that are needed for webpack to build the dependency tree for bundling
@@ -47,4 +47,17 @@ require('ClassB');
 import ClassB = require('ClassB');
 ```
 
-Now everything will work. This is what we do using the preprocessor, because it is a task we can automate by prepending every source with a `require` shim and we can modify every line by a regex replacement.
+Now everything will work. 
+
+These steps are automated in this example project: it prepends every `.ts` source with a `require` shim and it modifies every line that contains an import using a regular expression.
+
+Caveat
+
+The regular expression to add require statements is very rudimentary (crude). The current version only works for the demo project where statements are `import sSomething = require('module');`:
+
+```
+return line.replace(/^(import.*(require\\(.*?\\)))/g, '$2;$1');
+// import ClassA = require('ClassA');
+// becomes:
+// require('ClassA'); import ClassA = require('ClassA');
+```
